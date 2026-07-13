@@ -3,11 +3,14 @@
 <h1>Blogs</h1>
 
 <div id="blogs">
+
+  <%= link_to "Create New Blog", new_blog_post_path %>
+
   <% @blogPosts.each do |blog| %>
-      <div class="blog-post-tile">
-          <h2 class="title"><%= link_to blog.title, blog_post_path(blog) %></h2>
-          <%# truncate the body to 200 characters %>
-          <p class="body"><%= truncate(blog.body, length: 200) %></p>
-      </div>
+    <a href="/blog_posts/<%= blog.id %>" class="blog-post-tile">
+      <h2 class="title"><%= blog.title %></h2>
+      <%# truncate the body to 200 characters %>
+      <p class="body"><%= truncate(blog.body, length: 200) %></p>
+    </a>
   <% end %>
 </div>

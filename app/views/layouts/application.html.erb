@@ -25,6 +25,25 @@
   </head>
 
   <body>
-    <%= yield %>
+
+    <header class="main-header">
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="/">Accounts</a></li>
+          <li><a href="/blog_posts">Blogs</a></li>
+          <li><%= link_to "Login", new_session_path unless authenticated? %></li>
+          <li><%= button_to "Log out", session_path, method: :delete if authenticated? %></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div class="page-container">
+        <div class="content-container">
+          <%= yield %>
+        </div>
+      </div>
+    </main>
+    
   </body>
 </html>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resource :session
+  resources :passwords, param: :token
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -20,14 +22,14 @@ Rails.application.routes.draw do
 
   # This is a shortcut for the following routes:
  
-  # get "/products", to: "products#index"
-  # get "/products/new", to: "products#new"
-  # post "/products", to: "products#create"
-  # get "/products/:id", to: "products#show"
-  # get "/products/:id/edit", to: "products#edit"
-  # patch "/products/:id", to: "products#update"
-  # put "/products/:id", to: "products#update"
-  # delete "/products/:id", to: "products#destroy"
+  # get "/blog", to: "blog#index"
+  # get "/blog/new", to: "blog#new"
+  # post "/blog", to: "blog#create"
+  # get "/blog/:id", to: "blog#show"
+  # get "/blog/:id/edit", to: "blog#edit"
+  # patch "/blog/:id", to: "blog#update"
+  # put "/blog/:id", to: "blog#update"
+  # delete "/blog/:id", to: "blog#destroy"
   
   resources :blog_posts
 end
