@@ -10,5 +10,24 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  root "blog_posts#index"
+
+  # get "/blog", to: "blog_posts#index"
+  
+  # get "/blog/:title", to: "blog_posts#show"
+
+  # post "/blog/new", to: "blog_posts#create"
+
+  # This is a shortcut for the following routes:
+ 
+  # get "/products", to: "products#index"
+  # get "/products/new", to: "products#new"
+  # post "/products", to: "products#create"
+  # get "/products/:id", to: "products#show"
+  # get "/products/:id/edit", to: "products#edit"
+  # patch "/products/:id", to: "products#update"
+  # put "/products/:id", to: "products#update"
+  # delete "/products/:id", to: "products#destroy"
+  
+  resources :blog_posts
 end

@@ -1,7 +1,13 @@
-# README
+# Piada Ruby on Rails Sample Project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Getting Started / Running the Project
+
+> Rails Version `8.1.3`
+> Ruby Version  `3.4.9`
+
+> Running the project
+`rails server`
+
 
 Things you may want to cover:
 

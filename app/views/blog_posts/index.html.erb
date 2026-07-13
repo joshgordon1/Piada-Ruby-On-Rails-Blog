@@ -1,0 +1,13 @@
+<!-- <%= debug @blogPosts %> -->
+<!-- Blogs Posts Index Page -->
+<h1>Blogs</h1>
+
+<div id="blogs">
+  <% @blogPosts.each do |blog| %>
+      <div class="blog-post-tile">
+          <h2 class="title"><%= link_to blog.title, blog_post_path(blog) %></h2>
+          <%# truncate the body to 200 characters %>
+          <p class="body"><%= truncate(blog.body, length: 200) %></p>
+      </div>
+  <% end %>
+</div>
