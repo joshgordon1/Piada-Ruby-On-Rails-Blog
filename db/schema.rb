@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_09_212130) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_13_215547) do
   create_table "accounts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "email"
@@ -25,5 +25,29 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_09_212130) do
     t.datetime "created_at", null: false
     t.string "title"
     t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_blog_posts_on_user_id"
   end
+
+  create_table "sessions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "ip_address"
+    t.datetime "updated_at", null: false
+    t.string "user_agent"
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_sessions_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "email_address", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "password_digest", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email_address"], name: "index_users_on_email_address", unique: true
+  end
+
+  add_foreign_key "blog_posts", "users"
+  add_foreign_key "sessions", "users"
 end

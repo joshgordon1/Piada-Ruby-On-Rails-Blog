@@ -19,11 +19,33 @@
     <link rel="apple-touch-icon" href="/icon.png">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
+    <%# check here %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= yield %>
+
+    <header class="main-header">
+      <nav aria-label="Main navigation">
+        <ul>
+          <% if authenticated? %>
+            <li><%= link_to "Create New Blog", new_blog_post_path %></li>
+          <% end %>
+          <li><a href="/blog_posts">Blogs</a></li>
+          <li><%= link_to "Login", new_session_path unless authenticated? %></li>
+          <li><%= button_to "Log out", session_path, method: :delete if authenticated? %></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div class="page-container">
+        <div class="content-container">
+          <%= yield %>
+        </div>
+      </div>
+    </main>
+    
   </body>
 </html>

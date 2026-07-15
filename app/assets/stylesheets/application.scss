@@ -1,1 +1,144 @@
-// Sassy
+@use "variables";
+@use "animations";
+
+// Global
+
+a {
+    text-decoration: none;
+    color: variables.$primary-theme-color;
+}
+
+button {
+    cursor: pointer;
+}
+
+body {
+    background: #2b2929;
+    color: #e0e0e0;
+}
+
+// Layout
+
+.page-container {
+    display: flex;
+    justify-content: center;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 15px;
+
+    @media (min-width: 768px) {
+        max-width: 800px;
+    }
+
+    @media (min-width: 1024px) {
+        max-width: 1280px;
+    }
+}
+
+// Flex Helpers
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+// Navigation
+
+.main-header {
+    position: relative;
+    top: 0;
+    height: 55px;
+    border-bottom: 1px solid #333;
+
+    nav {
+        display: flex;
+    }
+
+    ul {
+        display: flex;
+    }
+
+    li {
+        display: block;
+        padding: 10px;
+    }
+}
+
+// Blogs
+
+#blogs {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 1024px) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .blog-post-tile {
+        display: grid;
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 5px;
+        background: #2b2929;
+
+        @include animations.buttonBorderHover;
+
+        .title {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 10px 0;
+            overflow: hidden;
+            text-overflow: clip;
+            white-space: nowrap;
+        }
+
+        .timestamp {
+            font-size: 11px;
+        }
+
+        .body {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 12px;
+            margin: 10px 0;
+        }
+    } 
+}
+
+form {
+    label, input, textarea {
+        margin-bottom: 10px;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    textarea {
+        max-width: 100%;
+    }
+
+    input[type="submit"] {
+        @include animations.buttonBorderHover;
+    }
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+}
