@@ -7,6 +7,12 @@
 
 > Running the project
 `rails server`
+`bin/dev` on Unix
+
+
+Old Procfile.dev, now using bundle for Windows, and git bash
+web: bin/rails server -p 3000
+css: bin/rails dartsass:watch
 
 
 Things you may want to cover:
@@ -18,6 +24,9 @@ Things you may want to cover:
 * Configuration
 
 * Database creation
+
+`rails db:create`
+`rails db:migrate`
 
 * Database initialization
 

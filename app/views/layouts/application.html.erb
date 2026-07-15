@@ -29,7 +29,9 @@
     <header class="main-header">
       <nav aria-label="Main navigation">
         <ul>
-          <li><a href="/">Accounts</a></li>
+          <% if authenticated? %>
+            <li><%= link_to "Create New Blog", new_blog_post_path %></li>
+          <% end %>
           <li><a href="/blog_posts">Blogs</a></li>
           <li><%= link_to "Login", new_session_path unless authenticated? %></li>
           <li><%= button_to "Log out", session_path, method: :delete if authenticated? %></li>

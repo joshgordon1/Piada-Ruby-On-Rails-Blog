@@ -1,0 +1,22 @@
+@mixin buttonBorderHover($border-color: #000, $text-color: #fff, $outline-width: 4px) {
+    $outline: 2px solid $border-color;
+
+    text-decoration: none;
+    font-size: inherit;
+    border: 0;
+    line-height: 1;
+    background: none;
+    padding: .75em 1.5em;
+    color: $text-color;
+    outline: $outline;
+    border: $outline;
+    outline-offset: -2px;
+    transition: outline-width 200ms ease, outline-offset 200ms ease;
+
+    &:hover, &:focus {
+        outline: $outline;
+        outline-width: $outline-width;
+        outline-offset: -$outline-width;
+        // because of normalize
+    }
+}

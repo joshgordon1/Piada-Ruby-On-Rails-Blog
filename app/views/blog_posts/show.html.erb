@@ -3,7 +3,7 @@
 <p><%= @blogPost.body %></p>
 
 
-<% if authenticated? %>
+<% if authenticated? && @blogPost.user == Current.user %>
   <%= link_to "Edit", edit_blog_post_path(@blogPost) %>
   <%= button_to "Delete", @blogPost, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
 <% end %>

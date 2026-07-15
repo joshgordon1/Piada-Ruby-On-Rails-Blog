@@ -1,16 +1,40 @@
 <!-- <%= debug @blogPosts %> -->
 <!-- Blogs Posts Index Page -->
-<h1>Blogs</h1>
+
+<div class="flex-between">
+  <h1>Blogs</h1>
+
+  <% if authenticated? %>
+    <% if params[:mine] == "true" %>
+      <%= link_to "Show All Blogs", blog_posts_path %>
+    <% else %>
+      <%= link_to "Show My Blogs", blog_posts_path(mine: true) %>
+    <% end %>
+  <% end %>
+</div>
+
 
 <div id="blogs">
 
-  <%= link_to "Create New Blog", new_blog_post_path %>
-
-  <% @blogPosts.each do |blog| %>
-    <a href="/blog_posts/<%= blog.id %>" class="blog-post-tile">
-      <h2 class="title"><%= blog.title %></h2>
-      <%# truncate the body to 200 characters %>
-      <p class="body"><%= truncate(blog.body, length: 200) %></p>
-    </a>
+  <% if @blogPosts.length > 0 %>
+    <% @blogPosts.each do |blog| %>
+      <a href="/blog_posts/<%= blog.id %>" class="blog-post-tile">
+        <h2 class="title"><%= blog.title %></h2>
+        <p class="timestamp">
+          <% if blog.updated_at > blog.created_at %>
+            Updated <%= time_ago_in_words(blog.updated_at) %> ago
+          <% else %>
+            Posted <%= time_ago_in_words(blog.created_at) %> ago
+          <% end %></p>
+        <%# truncate the body to 200 characters %>
+        <p class="body"><%= truncate(blog.body, length: 200) %></p>
+      </a>
+    <% end %>
+  <% else %>
+    <% if authenticated? %>
+      <p>You have not posted any blogs!</p>
+    <% else %>
+      <p>This blog has not posts yet, sign in and be the first to write one!</p>
+    <% end %>
   <% end %>
 </div>
