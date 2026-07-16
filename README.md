@@ -6,8 +6,11 @@
 > Ruby Version  `3.4.9`
 
 > Running the project
-`rails server`
+> procfile.dev
 `bin/dev` on Unix
+>
+> web: bin/rails server -p 3000
+> css: bin/rails dartsass:watch
 
 
 Old Procfile.dev, now using bundle for Windows, and git bash
