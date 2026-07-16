@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   # delete "/blog/:id", to: "blog#destroy"
   
   resource :session
+  resource :sign_up
   resources :passwords, param: :token
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

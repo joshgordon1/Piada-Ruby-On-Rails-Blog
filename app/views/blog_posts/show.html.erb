@@ -1,10 +1,15 @@
+<%= link_to "← Back", blog_posts_path, class: "back-btn" %>
+
 <h1><%= @blogPost.title %></h1>
 
-<p><%= @blogPost.body %></p>
-
+<div class="blog-body">
+  <p><%= @blogPost.body %></p>
+</div>
 
 <% if authenticated? && @blogPost.user == Current.user %>
-  <%= link_to "Edit", edit_blog_post_path(@blogPost) %>
-  <%= button_to "Delete", @blogPost, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+  <div class="flex-center controls">
+    <%= link_to "Edit", edit_blog_post_path(@blogPost), class: "edit-btn"%>
+    <%= button_to "Delete", @blogPost, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+  </div>
 <% end %>
-<%= link_to "Back", blog_posts_path %>
+
