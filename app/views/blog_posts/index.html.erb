@@ -13,10 +13,15 @@
   <% end %>
 </div>
 
+<%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
 
-<div id="blogs">
+<% post_count = @blogPosts.length %>
+<div id="blogs" class="<%= class_names(
+  "populated" => post_count.positive?,
+  "count-#{post_count}" => post_count.between?(1, 3)
+) %>">
 
-  <% if @blogPosts.length > 0 %>
+  <% if post_count > 0 %>
     <% @blogPosts.each do |blog| %>
       <a href="/blog_posts/<%= blog.id %>" class="blog-post-tile">
 
@@ -39,8 +44,9 @@
 
     <% if authenticated? %>
       <p>You have not posted any blogs!</p>
+      <%= link_to "Create New Blog", new_blog_post_path %>
     <% else %>
-      <p>This blog has not posts yet, sign in and be the first to write one!</p>
+      <p>This blog has no posts yet, <%= link_to "Sign Up", sign_up_path %> and be the first to write one!</p>
     <% end %>
     
   <% end %>
